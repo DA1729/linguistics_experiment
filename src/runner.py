@@ -15,7 +15,7 @@ from .experiment import run_experiment
 from .languages import language_names, observation_rounds, select_pool
 from .package_data import package_data
 from .storage import (append_rows, atomic_bytes, atomic_json, digest, exclusive_lock, file_hash,
-                      read_json, read_jsonl, utc_now, write_jsonl)
+                      read_json, read_jsonl, utc_now)
 
 project_root = Path(__file__).resolve().parent.parent
 
@@ -23,9 +23,15 @@ project_root = Path(__file__).resolve().parent.parent
 def read_config(path: Path) -> dict:
     with path.open('rb') as stream:
         config = tomllib.load(stream)
-    with (project_root / 'config/experiment.toml').open('rb') as stream:
-        template = tomllib.load(stream)
-    if set(config) != set(template) or any(set(config[k]) != set(template[k]) for k in template):
+    phase_keys = {'sentences', 'rounds', 'repetitions', 'observe_every', 'observation_rounds'}
+    schema = {
+        'experiment': {'name', 'seed', 'selection_seed', 'language_count', 'languages'},
+        'model': {'name', 'revision', 'precision', 'batch_size', 'max_input_tokens', 'max_new_tokens', 'max_batch_seconds'},
+        'dataset': {'local_file', 'local_license'},
+        'runtime': {'max_hours', 'gpu_hourly_usd', 'progress_seconds'},
+        'smoke': phase_keys, 'pilot': phase_keys, 'main': phase_keys,
+    }
+    if set(config) != set(schema) or any(set(config[k]) != schema[k] for k in schema):
         raise ValueError('Configuration must contain exactly the documented sections and keys')
     if not re.fullmatch(r'[a-z0-9][a-z0-9_-]{0,79}', config['experiment']['name']):
         raise ValueError('experiment.name must be a short lowercase directory-safe identifier')
@@ -38,8 +44,8 @@ def read_config(path: Path) -> dict:
             value = config[phase][key]
             if type(value) is not int or value < (1 if key in ('sentences', 'repetitions') else 0):
                 raise ValueError(f'{phase}.{key} is invalid')
-        if any(type(r) is not int or r < 0 or r > config[phase]['rounds'] for r in config[phase]['observation_rounds']):
-            raise ValueError(f'{phase}.observation_rounds must lie within the experiment')
+        if any(type(r) is not int or r < 0 for r in config[phase]['observation_rounds']):
+            raise ValueError(f'{phase}.observation_rounds must be nonnegative integers')
     if config['smoke']['repetitions'] != 1 or config['smoke']['rounds'] < 2 or config['smoke']['sentences'] < 2:
         raise ValueError('Smoke checks require one repetition, at least two rounds and two sentences')
     if config['pilot']['rounds'] < 1:
@@ -77,7 +83,7 @@ def initialize(root: Path, config: dict, config_path: Path) -> None:
         if read_json(path) != identity:
             raise ValueError('Scientific configuration or code changed. Restore it to resume, or choose a new experiment.name.')
     else:
-        for p in source_files() + [project_root / 'README.md', project_root / 'ATTRIBUTION.md']:
+        for p in source_files() + sorted((project_root / 'tests').glob('*.py')) + [project_root / 'README.md', project_root / 'ATTRIBUTION.md']:
             atomic_bytes(root / 'reproduction' / p.relative_to(project_root), p.read_bytes())
         atomic_json(root / 'effective_config.json', config)
         atomic_bytes(root / 'reproduction/config/experiment.toml', config_path.read_bytes())
@@ -129,6 +135,8 @@ def smoke_check(root: Path, config: dict, corpus: list[dict], pool: list[str], e
     if any(file_hash(Path(p)) != expected for p, expected in prior.items()):
         raise RuntimeError('Smoke recovery modified a committed round')
     for path in smoke_dir.glob('rounds/round_*/*.jsonl'):
+        if path.name not in ('translations.jsonl', 'observations.jsonl', 'journal.jsonl'):
+            continue
         rows = read_jsonl(path)
         keys = [(row['kind'], row['round'], row['sentence_id']) for row in rows]
         if len(keys) != len(set(keys)):
@@ -187,14 +195,16 @@ def execute(args) -> int:
             return stopped or time.time() >= deadline
 
         workflow = {'status': 'incomplete', 'requested_mode': args.mode, 'invocation_started_at': utc_now()}
+        invocation_path = root / 'invocations' / f'{uuid.uuid4().hex}.json'
         exit_code = 0
         try:
             initialize(root, config, args.config)
+            atomic_json(invocation_path, {**workflow, 'runtime': config['runtime']})
             atomic_json(root / 'workflow_status.json', workflow)
             pool = select_pool(config['experiment'])
             atomic_json(root / 'language_pool.json', [{'code': code, 'name': language_names.get(code, code)} for code in pool])
             count = max(config[phase]['sentences'] for phase in ('smoke', 'pilot', 'main'))
-            corpus, provenance = prepare_corpus(root / 'corpus', config['dataset'], count, config['experiment']['selection_seed'])
+            corpus, _ = prepare_corpus(root / 'corpus', config['dataset'], count, config['experiment']['selection_seed'])
             if should_stop():
                 raise InterruptedError('Deadline reached during setup')
             from .translation import load_translator
@@ -237,6 +247,7 @@ def execute(args) -> int:
             exit_code = 1
         finally:
             workflow['invocation_ended_at'] = utc_now()
+            atomic_json(invocation_path, {**workflow, 'runtime': config['runtime']})
             atomic_json(root / 'workflow_status.json', workflow)
             logging.info('Invocation status: %s', workflow['status'])
             for handler in logging.getLogger().handlers:

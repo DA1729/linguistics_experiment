@@ -14,7 +14,7 @@ from src.languages import derive_seed, language_names, make_schedule, observatio
 from src.package_data import package_data, verify_archive
 from src.runner import estimate_main, initialize, read_config
 from src.storage import (append_rows, atomic_json, file_hash, read_json, read_jsonl,
-                         recover_journal, verify_round, write_jsonl)
+                         recover_journal, verify_round, write_jsonl, exclusive_lock)
 from src.translation import (batch_indices, encode_inputs, resilient_batch, suspicious_output,
                              translate_batches, validate_languages)
 
@@ -306,6 +306,10 @@ class project_tests(unittest.TestCase):
             raise RuntimeError('device error')
         with self.assertRaisesRegex(RuntimeError, 'device error'):
             self.run_experiment(translate=broken)
+        evidence = read_jsonl(self.run_dir / 'rounds/pending_000002/failure_attempts.jsonl')
+        self.assertTrue(evidence)
+        self.assertEqual(evidence[0]['status'], 'exception')
+        self.assertIn('device error', evidence[0]['error'])
         self.assertEqual(self.run_experiment()['status'], 'complete')
 
     def test_deadline_does_not_advance_state(self):
@@ -337,6 +341,13 @@ class project_tests(unittest.TestCase):
         self.assertEqual(manifest['status'], 'incomplete')
         self.assertTrue(any('pending_' in name for name in manifest['files']))
 
+    def test_archive_derives_incomplete_status_from_rounds(self):
+        self.run_experiment(stop_after_round=1)
+        atomic_json(self.root / 'workflow_status.json', {'status': 'complete'})
+        archive = package_data(self.root, self.root.parent / (self.root.name + '_archives'))
+        self.addCleanup(lambda: __import__('shutil').rmtree(archive.parent))
+        self.assertEqual(verify_archive(archive)['status'], 'incomplete')
+
     def test_archive_refuses_corrupt_completed_round(self):
         self.run_experiment()
         path = self.run_dir / 'rounds/round_000001/checkpoint.json'
@@ -366,6 +377,26 @@ class project_tests(unittest.TestCase):
         write_jsonl(path, rows)
         with self.assertRaises(ValueError):
             self.run_experiment()
+
+    def test_pending_output_corruption_rejected(self):
+        self.run_experiment(translate=functools.partial(mock_translate, calls=self.calls, interrupt_at=2))
+        path = self.run_dir / 'rounds/pending_000001/journal.jsonl'
+        rows = read_jsonl(path)
+        rows[0]['output_text'] = 'corrupted but valid JSON'
+        write_jsonl(path, rows)
+        with self.assertRaisesRegex(ValueError, 'checksum'):
+            self.run_experiment()
+
+    def test_writer_lock_excludes_second_process(self):
+        import subprocess
+        import sys
+        with exclusive_lock(self.root):
+            result = subprocess.run([sys.executable, '-c',
+                'from pathlib import Path; from src.storage import exclusive_lock; '
+                'import sys; ctx=exclusive_lock(Path(sys.argv[1])); ctx.__enter__()', str(self.root)],
+                cwd=project_root, capture_output=True, text=True)
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn('Another process', result.stderr)
 
     def test_suspicious_outputs_remain_exact(self):
         self.assertIn('empty_output', suspicious_output('  '))

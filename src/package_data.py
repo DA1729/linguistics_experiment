@@ -27,14 +27,24 @@ def verify_archive(path: Path) -> dict:
 def package_data(root: Path, archive_directory: Path) -> Path:
     if not root.is_dir():
         raise ValueError(f'No experiment data at {root}')
-    for path in root.glob('runs/*/rounds/round_*'):
-        verify_round(path)
+    unfinished = False
+    for run in root.glob('runs/*'):
+        paths = sorted((run / 'rounds').glob('round_*'))
+        for index, path in enumerate(paths):
+            checkpoint = verify_round(path)
+            if path.name != f'round_{index:06d}' or checkpoint['round'] != index:
+                raise ValueError(f'Noncontiguous checkpoint history: {run}')
+        if (run / 'metadata.json').exists():
+            expected = read_json(run / 'metadata.json')['identity']['settings']['rounds'] + 1
+            unfinished = unfinished or len(paths) != expected
+        else:
+            unfinished = True
     archive_directory.mkdir(parents=True, exist_ok=True)
     if archive_directory.resolve().is_relative_to(root.resolve()):
         raise ValueError('Archives must be outside experiment data')
     workflow = read_json(root / 'workflow_status.json') if (root / 'workflow_status.json').exists() else {'status': 'incomplete'}
     status = workflow['status']
-    if any(root.glob('runs/*/rounds/pending_*')):
+    if unfinished or any(root.glob('runs/*/rounds/pending_*')):
         status = 'incomplete'
     destination = archive_directory / f'{root.name}_{status}.zip'
     temp = destination.with_suffix('.zip.tmp')

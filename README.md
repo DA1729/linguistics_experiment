@@ -86,7 +86,8 @@ Edit `config/experiment.toml` **before the first run**. Defaults:
 `sentences`, `rounds`, `repetitions`, `observe_every`, and `observation_rounds` are
 per-phase settings. Round zero and the final round are always observed; explicit
 rounds and the regular interval are combined. Set `observe_every = 0` for explicit
-rounds only. The smoke recovery check always runs once; keep `smoke.repetitions = 1`.
+rounds only; entries beyond the final round are ignored. The smoke recovery check
+always runs once; keep `smoke.repetitions = 1`.
 
 `experiment.language_count` selects a prefix of the documented diverse 50-code pool
 in `src/languages.py`. `experiment.languages` overrides that count with an explicit
@@ -145,6 +146,7 @@ linguistic_big_runtime/
     smoke_*                   real mixed/individual probes and recovery checks
     logs/execution.log        progress, warnings, failures
     workflow_status.json      completion for the requested workflow
+    invocations/              per-launch limits, timestamps, and outcomes
     runtime_estimate.json     measured pilot extrapolation
   archives/<experiment_name>_<complete|incomplete>.zip
 ```
@@ -156,6 +158,9 @@ sentences and `english_translation`. `status = ok` means a nonempty completed de
 not linguistic correctness. `model_invoked = false` identifies round-zero copies and
 skipped terminated trajectories. Do not treat failures, skipped/null values, or empty
 strings as successful convergence. Token-limit outputs can still be `ok`, with flags.
+Backend exceptions halt the run and preserve input/error evidence in
+`failure_attempts.jsonl`; these are failed attempts, not completed trajectory steps.
+Resume may retry them without fabricating a sentence.
 
 Batches append to an fsynced journal. After all translations **and observations** finish,
 the program writes the checkpoint and checksums, then atomically renames the round

@@ -197,6 +197,9 @@ def resilient_batch(engine: dict, items: list[dict], target: str, on_batch=None,
         if len(items) == 1:
             raise
         new_size = max(1, len(items) // 2)
+    except Exception as exc:
+        exc.translation_inputs = items
+        raise
     else:
         if reduced:
             for result in results:

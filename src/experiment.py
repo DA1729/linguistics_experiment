@@ -28,6 +28,8 @@ def make_requests(states: list[dict], corpus: list[dict], schedules: dict, round
 
 
 def validate_record(row: dict, request: dict) -> None:
+    if row.get('record_digest') != digest({key: value for key, value in row.items() if key != 'record_digest'}):
+        raise ValueError('Translation record checksum mismatch')
     if row.get('request_digest') != digest(request) or any(row.get(k) != v for k, v in request.items()):
         raise ValueError('Translation record does not match trajectory or language schedule')
     if row.get('status') not in {'ok', 'failed', 'skipped'}:
@@ -65,6 +67,10 @@ def collect(requests: list[dict], journal: Path, saved: dict, translate, should_
             row = {**request, 'request_digest': digest(request), 'output_text': request['input_text'] if status == 'ok' else None,
                    'status': status, 'warnings': [], 'error': request['termination_reason'],
                    'collection_seconds': 0.0, 'model_invoked': False}
+            if request['kind'] == 'observation':
+                row['english_translation'] = row['output_text']
+                row['current_sentence'] = request['input_text']
+            row['record_digest'] = digest(row)
             append_rows(journal, [row])
             saved[key] = row
         else:
@@ -85,6 +91,7 @@ def collect(requests: list[dict], journal: Path, saved: dict, translate, should_
             if request['kind'] == 'observation':
                 row['english_translation'] = result['output_text']
                 row['current_sentence'] = request['input_text']
+            row['record_digest'] = digest(row)
             validate_record(row, request)
             rows.append(row)
         append_rows(journal, rows)
@@ -101,7 +108,20 @@ def collect(requests: list[dict], journal: Path, saved: dict, translate, should_
     items = [{'sentence_id': row['sentence_id'], 'text': row['input_text'],
               'source_language': row['source_language'], 'target_language': row['target_language']} for row in missing]
     if items:
-        translate(items, on_batch=persist_batch, should_stop=should_stop)
+        try:
+            translate(items, on_batch=persist_batch, should_stop=should_stop)
+        except InterruptedError:
+            raise
+        except Exception as exc:
+            failed_items = getattr(exc, 'translation_inputs', None)
+            attempts = failed_items if failed_items is not None else [
+                item for item in items if (requests[0]['kind'], item['sentence_id']) not in saved]
+            append_rows(journal.parent / 'failure_attempts.jsonl', [{
+                **request_by_id[item['sentence_id']], 'status': 'exception', 'output_text': None,
+                'error': f'{type(exc).__name__}: {exc}', 'attempted_at': utc_now(),
+                'scope': 'failed_batch' if failed_items is not None else 'unfinished_request_set',
+                'note': 'No successful result; run halted. Retry is allowed on resume.'} for item in attempts])
+            raise
     rows = [saved[(row['kind'], row['sentence_id'])] for row in requests]
     for row in rows:
         if row['kind'] == 'observation':
@@ -180,6 +200,7 @@ def run_experiment(directory: Path, config: dict, phase: str, repetition: int, c
         pending.mkdir(exist_ok=True)
         journal = pending / 'journal.jsonl'
         saved = {}
+        recover_journal(pending / 'failure_attempts.jsonl')
         for row in recover_journal(journal):
             key = (row['kind'], row['sentence_id'])
             if key in saved or row['round'] != round_index:
