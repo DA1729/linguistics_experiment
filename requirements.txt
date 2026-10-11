@@ -1,0 +1,7 @@
+# PyTorch is checked separately; keep the Pod's working CUDA installation.
+transformers==4.57.6
+tokenizers==0.22.2
+huggingface-hub==0.36.0
+sentencepiece==0.2.1
+safetensors==0.7.0
+numpy==2.2.6
