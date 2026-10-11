@@ -206,3 +206,10 @@ retain its attribution and license when sharing. See [ATTRIBUTION.md](ATTRIBUTIO
 for sources and the mirror's differing license label. Translation token handling follows
 [Hugging Face's NLLB documentation](https://huggingface.co/docs/transformers/model_doc/nllb),
 using the nonlegacy source-prefix convention and a forced destination token.
+
+## Laptop variant
+
+The independent [laptop codebase](laptop/README.md) targets the Radeon 860M laptop.
+Its default command runs a short benchmark only, with a four-hour limit and a runtime
+estimate gate for explicitly requested local experiments. The RunPod workflow above
+remains unchanged.

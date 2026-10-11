@@ -1,0 +1,56 @@
+[experiment]
+name = "laptop_translation_small_v1"
+seed = 20261011
+selection_seed = 1729
+language_count = 50
+# Optional explicit NLLB codes; when set, overrides language_count.
+languages = []
+
+[model]
+name = "facebook/nllb-200-distilled-600M"
+revision = "f8d333a098d19b4fd9a8b18f94170487ad3f821d"
+precision = "float32"
+batch_size = 4
+device = "auto"
+cpu_threads = 4
+max_input_tokens = 512
+max_new_tokens = 256
+max_batch_seconds = 45.0
+
+[dataset]
+local_file = ""
+local_license = "user_supplied; consult corpus owner"
+
+[runtime]
+max_hours = 4.0
+# Local runs incur no RunPod charge; electricity is not estimated.
+gpu_hourly_usd = 0.0
+progress_seconds = 15.0
+
+[smoke]
+sentences = 4
+rounds = 2
+repetitions = 1
+observe_every = 1
+observation_rounds = []
+
+[pilot]
+sentences = 16
+rounds = 3
+repetitions = 1
+observe_every = 1
+observation_rounds = []
+
+[main]
+sentences = 50
+rounds = 30
+repetitions = 1
+observe_every = 5
+observation_rounds = [0, 1, 2, 3, 5, 10, 15]
+
+[laptop]
+benchmark_minutes = 10.0
+estimate_safety_factor = 2.0
+minimum_free_memory_gib = 1.0
+maximum_temperature_c = 90.0
+require_ac_power = true
