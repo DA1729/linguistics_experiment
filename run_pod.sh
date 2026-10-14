@@ -25,6 +25,9 @@ export USE_TF=0
 export USE_FLAX=0
 export HF_HOME="$runtime_root/cache/huggingface"
 export HF_HUB_DISABLE_TELEMETRY=1
+# Pod templates may enable the optional hf_transfer package without installing it.
+# Use the download backends provided by our pinned requirements instead.
+export HF_HUB_ENABLE_HF_TRANSFER=0
 export HF_HUB_ETAG_TIMEOUT=30
 export HF_HUB_DOWNLOAD_TIMEOUT=60
 export CUBLAS_WORKSPACE_CONFIG=:4096:8

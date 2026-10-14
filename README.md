@@ -57,6 +57,23 @@ installs pinned inference packages, downloads the pinned model/corpus, runs GPU 
 checks, runs the pilot, prints measured main-runtime/cost estimates, and collects the
 main experiment. No local model download or CUDA setup is needed.
 
+The launcher overrides `HF_HUB_ENABLE_HF_TRANSFER=0` so Pod templates cannot
+require the uninstalled optional `hf_transfer` downloader. If an older launcher
+failed with that error during model loading, pull the fix and preserve the failed
+setup directory before restarting:
+
+```bash
+git pull
+mv /workspace/linguistic_big_runtime/data/multilingual_translation_v1 \
+   "/workspace/linguistic_big_runtime/data/multilingual_translation_v1_failed_setup_$(date +%Y%m%d_%H%M%S)"
+nohup bash run_pod.sh > /workspace/translation_launcher.log 2>&1 &
+```
+
+This recovery applies to a failure before inference started. It keeps the old
+setup records, installed environment, and download cache. The new run needs a
+fresh data directory because saved experiment identities include the launcher
+checksum; ordinary interrupted runs with unchanged code should resume directly.
+
 ```bash
 bash run_pod.sh smoke       # GPU integration checks and tiny resumable experiment
 bash run_pod.sh pilot       # smoke then pilot
