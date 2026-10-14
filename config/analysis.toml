@@ -1,0 +1,18 @@
+archive = "data/multilingual_translation_v1_complete.zip"
+output = "reports/translation_v1"
+cache = ".analysis_runtime/cache"
+run_id = "main_001"
+seed = 20261015
+cpu_threads = 4
+permutations = 999
+bootstrap_samples = 500
+pair_sample_size = 50000
+subsample_size = 500
+subsample_repetitions = 100
+
+[embedding]
+model = "sentence-transformers/all-MiniLM-L6-v2"
+revision = "1110a243fdf4706b3f48f1d95db1a4f5529b4d41"
+batch_size = 64
+max_seq_length = 256
+thresholds = [0.70, 0.80, 0.90]
