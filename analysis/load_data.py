@@ -7,7 +7,8 @@ import zipfile
 import pandas as pd
 
 from src.experiment import initial_state, make_requests, next_state, verify_records
-from src.languages import make_schedule
+from src.languages import derive_seed, make_schedule
+from src.dataset import select_sentences
 from src.package_data import verify_archive
 from src.storage import digest
 from .common import file_hash, save_json, save_table
@@ -58,6 +59,8 @@ def load_and_audit(config):
         check(len({x['text'] for x in corpus}) == len(corpus), 'Duplicate original texts')
         provenance = read('corpus/provenance.json')
         check(hashlib.sha256(archive.read('corpus/source_english.devtest')).hexdigest() == provenance['source_sha256'], 'Source corpus hash')
+        source_text = archive.read('corpus/source_english.devtest').decode('utf-8')
+        check(select_sentences(source_text, len(corpus), provenance['selection_seed']) == corpus, 'Source sentence selection, IDs and line provenance')
         environment = read('environment.json')
         experiment_config = read('effective_config.json')
         pool = read('language_pool.json')
@@ -75,6 +78,7 @@ def load_and_audit(config):
             check(digest(run_corpus) == identity['corpus_digest'], run_id + ': corpus digest')
             check(digest(environment) == identity['environment_digest'], run_id + ': environment digest')
             for row in schedules:
+                check(row['seed'] == derive_seed(identity['seed'], row['sentence_id']), run_id + ': schedule seed derivation')
                 langs = row['languages']
                 check(langs == make_schedule(identity['language_pool'], identity['settings']['rounds'], row['seed']), run_id + ': seeded schedule mismatch ' + row['sentence_id'])
                 check(all(a != b for a, b in zip(langs, langs[1:])), run_id + ': adjacent language repeat')
@@ -142,7 +146,7 @@ def load_and_audit(config):
                 main_identity, main_schedules = identity, schedules
         audit = {'archive_sha256': archive_hash, 'sidecar_verified': sidecar.exists(), 'manifest_files': len(manifest['files']),
                  'zip_members': len(inventory), 'archive_status': manifest['status'], 'corpus_sentences': len(corpus),
-                 'unique_originals': len({r['text'] for r in corpus}), 'runs': run_summaries,
+                 'unique_originals': len({r['text'] for r in corpus}), 'source_lines': len(source_text.splitlines()), 'runs': run_summaries,
                  'pending_files': sum('/pending_' in n for n in names), 'discrepancies': discrepancies,
                  'provenance': provenance, 'language_pool': pool, 'model': {k: environment[k] for k in ('model_name','model_revision','precision','torch','transformers','gpu')},
                  'observation_rounds': main_identity['observation_rounds'],

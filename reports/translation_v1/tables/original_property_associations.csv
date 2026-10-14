@@ -1,0 +1,5 @@
+property,trajectories,spearman_with_final_original_cosine
+initial_words,1000,-0.02308238891
+has_number,1000,0.11504203
+initial_ttr,1000,-0.01504735366
+punctuation_count,1000,-0.02436865011

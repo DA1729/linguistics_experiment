@@ -1,0 +1,76 @@
+test_archive_loading_and_duplicate_members (test_analysis.analysis_tests.test_archive_loading_and_duplicate_members) ... ok
+test_empty_and_singleton (test_analysis.analysis_tests.test_empty_and_singleton) ... ok
+test_flags_separate_from_status (test_analysis.analysis_tests.test_flags_separate_from_status) ... ok
+test_invalid_outputs_excluded (test_analysis.analysis_tests.test_invalid_outputs_excluded) ... ok
+test_json_output_has_no_nan_literals (test_analysis.analysis_tests.test_json_output_has_no_nan_literals) ... ok
+test_missing_trajectories_use_common_denominator (test_analysis.analysis_tests.test_missing_trajectories_use_common_denominator) ... ok
+test_multiple_clusters (test_analysis.analysis_tests.test_multiple_clusters) ... ok
+test_no_merges (test_analysis.analysis_tests.test_no_merges) ... ok
+test_normalization (test_analysis.analysis_tests.test_normalization) ... ok
+test_numbers_and_retention_denominators (test_analysis.analysis_tests.test_numbers_and_retention_denominators) ... ok
+test_permutation_known_expectation_and_reproducibility (test_analysis.analysis_tests.test_permutation_known_expectation_and_reproducibility) ... ok
+test_projection_requires_language (test_analysis.analysis_tests.test_projection_requires_language) ... ok
+test_semantic_aggregation (test_analysis.analysis_tests.test_semantic_aggregation) ... ok
+test_sparse_schedule_outputs_and_projection (test_analysis.analysis_tests.test_sparse_schedule_outputs_and_projection) ... ok
+test_stable_partition_can_change_text (test_analysis.analysis_tests.test_stable_partition_can_change_text) ... ok
+test_state_reconstruction_and_observation_input_validation (test_analysis.analysis_tests.test_state_reconstruction_and_observation_input_validation) ... ok
+test_temporary_merge_and_split (test_analysis.analysis_tests.test_temporary_merge_and_split) ... ok
+test_universal_equality (test_analysis.analysis_tests.test_universal_equality) ... ok
+test_empty_output_preserved (test_generation.generation_tests.test_empty_output_preserved) ... ok
+test_exact_outputs_tokens_and_target_forcing (test_generation.generation_tests.test_exact_outputs_tokens_and_target_forcing) ... ok
+test_generation_limit_is_flagged_even_with_forced_eos (test_generation.generation_tests.test_generation_limit_is_flagged_even_with_forced_eos) ... ok
+test_reduced_batches_durable_before_later_failure (test_generation.generation_tests.test_reduced_batches_durable_before_later_failure) ... WARNING:root:CUDA OOM: reducing batch size to 1
+ok
+test_time_limit_preserves_raw_output_but_marks_failure (test_generation.generation_tests.test_time_limit_preserves_raw_output_but_marks_failure) ... ok
+test_wrong_target_token_rejected (test_generation.generation_tests.test_wrong_target_token_rejected) ... ok
+test_archive_and_manifest (test_project.project_tests.test_archive_and_manifest) ... ok
+test_archive_derives_incomplete_status_from_rounds (test_project.project_tests.test_archive_derives_incomplete_status_from_rounds) ... ok
+test_archive_refuses_corrupt_completed_round (test_project.project_tests.test_archive_refuses_corrupt_completed_round) ... ok
+test_bad_backend_mapping_rejected (test_project.project_tests.test_bad_backend_mapping_rejected) ... ok
+test_configuration_and_environment_mismatch_rejected (test_project.project_tests.test_configuration_and_environment_mismatch_rejected) ... ok
+test_corpus_exact_unique_reproducible (test_project.project_tests.test_corpus_exact_unique_reproducible) ... ok
+test_corrupt_round_rejected (test_project.project_tests.test_corrupt_round_rejected) ... ok
+test_crash_before_atomic_round_rename (test_project.project_tests.test_crash_before_atomic_round_rename) ... ok
+test_custom_corpus_provenance_and_change_detection (test_project.project_tests.test_custom_corpus_provenance_and_change_detection) ... ok
+test_deadline_does_not_advance_state (test_project.project_tests.test_deadline_does_not_advance_state) ... ok
+test_default_observation_rounds (test_project.project_tests.test_default_observation_rounds) ... ok
+test_diagnostic_failure_does_not_terminate_trajectory (test_project.project_tests.test_diagnostic_failure_does_not_terminate_trajectory) ... ok
+test_download_checksum_rejected (test_project.project_tests.test_download_checksum_rejected) ... ok
+test_duplicate_journal_record_rejected (test_project.project_tests.test_duplicate_journal_record_rejected) ... ok
+test_estimate_includes_diagnostics_and_repetitions (test_project.project_tests.test_estimate_includes_diagnostics_and_repetitions) ... ok
+test_failure_terminates_without_replacement (test_project.project_tests.test_failure_terminates_without_replacement) ... ok
+test_generic_translation_exception_preserves_state (test_project.project_tests.test_generic_translation_exception_preserves_state) ... ok
+test_incomplete_archive_contains_partial_evidence (test_project.project_tests.test_incomplete_archive_contains_partial_evidence) ... ok
+test_interrupt_during_observations_resume (test_project.project_tests.test_interrupt_during_observations_resume) ... ok
+test_invalid_pool (test_project.project_tests.test_invalid_pool) ... ok
+test_journal_malformed_complete_line_is_not_discarded (test_project.project_tests.test_journal_malformed_complete_line_is_not_discarded) ... ok
+test_language_tokens_validation (test_project.project_tests.test_language_tokens_validation) ... ok
+test_mixed_source_encoding_isolated_and_truncation_flagged (test_project.project_tests.test_mixed_source_encoding_isolated_and_truncation_flagged) ... ok
+test_observations_never_replace_states (test_project.project_tests.test_observations_never_replace_states) ... ok
+test_oom_adaptive_reduction (test_project.project_tests.test_oom_adaptive_reduction) ... WARNING:root:CUDA OOM: reducing batch size to 2
+WARNING:root:CUDA OOM: reducing batch size to 1
+ok
+test_partial_batch_journal_resume_and_torn_tail (test_project.project_tests.test_partial_batch_journal_resume_and_torn_tail) ... ok
+test_pending_output_corruption_rejected (test_project.project_tests.test_pending_output_corruption_rejected) ... ok
+test_pending_wrong_source_label_rejected (test_project.project_tests.test_pending_wrong_source_label_rejected) ... ok
+test_reject_wrong_source_prefix (test_project.project_tests.test_reject_wrong_source_prefix) ... ok
+test_round_checkpoint_resume_no_recompute_or_duplicates (test_project.project_tests.test_round_checkpoint_resume_no_recompute_or_duplicates) ... ok
+test_schedule_permutations_and_boundaries (test_project.project_tests.test_schedule_permutations_and_boundaries) ... ok
+test_schedule_reproducible_independent_streams (test_project.project_tests.test_schedule_reproducible_independent_streams) ... ok
+test_schedules_tampering_rejected (test_project.project_tests.test_schedules_tampering_rejected) ... ok
+test_single_item_oom_propagates (test_project.project_tests.test_single_item_oom_propagates) ... ok
+test_source_snapshot_and_runtime_only_changes (test_project.project_tests.test_source_snapshot_and_runtime_only_changes) ... ok
+test_suspicious_outputs_remain_exact (test_project.project_tests.test_suspicious_outputs_remain_exact) ... ok
+test_target_batches_restore_input_order (test_project.project_tests.test_target_batches_restore_input_order) ... ok
+test_user_defined_identifiers_snake_case (test_project.project_tests.test_user_defined_identifiers_snake_case) ... ok
+test_writer_lock_excludes_second_process (test_project.project_tests.test_writer_lock_excludes_second_process) ... ok
+test_config_validation_rejects_typo_and_bad_limits (test_workflow.workflow_tests.test_config_validation_rejects_typo_and_bad_limits) ... ok
+test_full_workflow_archive_resume_and_cpu_package_command (test_workflow.workflow_tests.test_full_workflow_archive_resume_and_cpu_package_command) ... ok
+test_runtime_failure_archives_saved_data (test_workflow.workflow_tests.test_runtime_failure_archives_saved_data) ... ok
+test_smoke_only_then_upgrade_to_full_workflow (test_workflow.workflow_tests.test_smoke_only_then_upgrade_to_full_workflow) ... ok
+test_stopped_workflow_archive_is_incomplete (test_workflow.workflow_tests.test_stopped_workflow_archive_is_incomplete) ... ok
+
+----------------------------------------------------------------------
+Ran 68 tests in 2.910s
+
+OK

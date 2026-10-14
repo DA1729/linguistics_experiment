@@ -1,0 +1,90 @@
+[
+  {
+    "name": "01_exact_diversity",
+    "caption": "Exact raw-string diversity at the 24 observed rounds. The vertical axis is restricted to make small changes visible; 1,000 trajectories were observed each time."
+  },
+  {
+    "name": "02_collision_probability",
+    "caption": "Unordered equal-output pairs divided by N(N−1)/2, scaled to one million pairs. Pair comparisons are not independent experimental replicates."
+  },
+  {
+    "name": "03_largest_groups",
+    "caption": "Largest three group sizes at each observation. Ranks can refer to different sentences and members at different rounds; ties use lexical string order."
+  },
+  {
+    "name": "04_entropy_diversity",
+    "caption": "Entropy of empirical English output labels and Hill diversity numbers. These are not estimates of retained information about the original sentence."
+  },
+  {
+    "name": "05_rank_frequency",
+    "caption": "Empirical rank-frequency profiles, dominated by singleton outputs. A logarithmic rank axis exposes the few repeated outputs; no power-law model is fitted."
+  },
+  {
+    "name": "06_cluster_size_distribution",
+    "caption": "Singleton counts and counts of each nonsingleton group size, separated to avoid hiding the small collision groups."
+  },
+  {
+    "name": "07_normalization",
+    "caption": "Raw Unicode, NFC, collapsed whitespace, case folding, and punctuation-to-space comparisons. Normalization-induced equality is not semantic equivalence."
+  },
+  {
+    "name": "08_active_vs_english",
+    "caption": "Active linguistic states use both language and raw text and are available at all 101 checkpoints. English observations use a different representation space at only the displayed observation rounds."
+  },
+  {
+    "name": "09_projection_collisions",
+    "caption": "English-equal pairs split into identical and distinct pre-observation states. This is an operational partition, not a causal estimate of diagnostic translation effects."
+  },
+  {
+    "name": "10_collision_persistence",
+    "caption": "Pair persistence across successive observed endpoints. Intervals are 1, 1, 1, 2, then 5 rounds; undefined values when no previous collisions exist are left blank. Shading is a conditional null interval, not a confidence interval."
+  },
+  {
+    "name": "11_partition_dynamics",
+    "caption": "Merge/split counts and turnover between the largest groups at successive observations. Tied largest groups are selected lexicographically; the heatmap does not imply a single persistent dominant sentence."
+  },
+  {
+    "name": "12_semantic_drift",
+    "caption": "Normalized MiniLM cosine to the corresponding original. Whole trajectories are resampled with the same 500 draws across rounds; bootstrap intervals describe corpus sensitivity, not uncertainty across models or independent experiments."
+  },
+  {
+    "name": "13_semantic_pair_distribution",
+    "caption": "Pair-similarity summaries use the same 50,000 sampled distinct trajectory pairs at every observation. The mean is also calculated exactly over all pairs; pair quantiles are descriptive and not independent replicates."
+  },
+  {
+    "name": "14_semantic_geometry",
+    "caption": "For unit vectors, dispersion equals one minus squared centroid norm. These are related geometric descriptions, not independent evidence of semantic convergence."
+  },
+  {
+    "name": "15_embedding_dimension",
+    "caption": "Eigenvalues of centered embedding covariance determine participation ratio, effective rank and PCA variance shares. These are finite-sample properties of this embedding model, not dimensions of language."
+  },
+  {
+    "name": "16_semantic_grouping",
+    "caption": "Exact collision rates compared with semantic similarity, and largest similarity-graph components at three thresholds. Graph connectivity can chain dissimilar sentences and is not an equivalence relation on meaning."
+  },
+  {
+    "name": "17_sentence_lengths",
+    "caption": "Word counts and length ratios; shaded region gives trajectory 10th–90th percentiles. Repeated outputs can increase lengths, so shortening is not presumed."
+  },
+  {
+    "name": "18_lexical_retention",
+    "caption": "Vocabulary and approximate content retention. Number/date averages include only originals containing those markers; dates use English month names and years, and content words exclude a fixed stop list."
+  },
+  {
+    "name": "19_quality_flags",
+    "caption": "Recorded warnings and separately defined heuristic flags. Warning sets overlap. The collector accepted these outputs with status ok; they are not retrospectively relabeled as explicit failures."
+  },
+  {
+    "name": "20_language_associations",
+    "caption": "The 15 target languages with highest descriptive flag rates. Input histories and scripts differ, and this is not a causal ranking of language quality."
+  },
+  {
+    "name": "21_candidate_outputs",
+    "caption": "Frequency histories for the five outputs with highest peak membership, tied by total contributing trajectories. Exact texts and membership evidence are in candidate_attractors.csv; none is asserted to be an attractor."
+  },
+  {
+    "name": "22_filtering_robustness",
+    "caption": "Primary metrics alongside flagged-output and largest-group exclusions. Filtering changes the population and is a sensitivity analysis, not a correction to the observed experiment."
+  }
+]

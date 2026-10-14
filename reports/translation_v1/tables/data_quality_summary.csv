@@ -1,0 +1,4 @@
+run_id,trajectories,schedules,checkpoints,observation_rounds,status,observation_records,observation_valid,model_invoked,status_ok,empty_outputs,translation_records,translation_valid,warning_repetitive_output,warning_generation_token_limit
+main_001,1000,1000,101,"[0, 1, 2, 3, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100]",complete,24000,24000,123000,124000,0,100000,100000,6740,6511
+pilot_001,100,100,31,"[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30]",complete,3100,3100,6000,6100,0,3000,3000,269,260
+smoke_001,4,4,3,"[0, 1, 2]",complete,12,12,16,20,0,8,8,,

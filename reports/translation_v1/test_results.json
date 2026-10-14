@@ -1,0 +1,13 @@
+{
+  "command": [
+    "/home/vincent/Projects/linguistic_big/.analysis_runtime/venv/bin/python",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "tests",
+    "-v"
+  ],
+  "passed": true,
+  "tests": 68
+}

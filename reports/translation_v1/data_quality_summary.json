@@ -1,0 +1,378 @@
+{
+  "archive_sha256": "47c3b3c552a24e8da9dcfedd0a308fa95595feae73a3c3e76d3b19fedc81e3ab",
+  "sidecar_verified": true,
+  "manifest_files": 717,
+  "zip_members": 718,
+  "archive_status": "complete",
+  "corpus_sentences": 1000,
+  "unique_originals": 1000,
+  "source_lines": 1012,
+  "runs": [
+    {
+      "run_id": "main_001",
+      "trajectories": 1000,
+      "schedules": 1000,
+      "checkpoints": 101,
+      "observation_rounds": [
+        0,
+        1,
+        2,
+        3,
+        5,
+        10,
+        15,
+        20,
+        25,
+        30,
+        35,
+        40,
+        45,
+        50,
+        55,
+        60,
+        65,
+        70,
+        75,
+        80,
+        85,
+        90,
+        95,
+        100
+      ],
+      "status": "complete",
+      "observation_records": 24000,
+      "observation_valid": 24000,
+      "model_invoked": 123000,
+      "status_ok": 124000,
+      "empty_outputs": 0,
+      "translation_records": 100000,
+      "translation_valid": 100000,
+      "warning_repetitive_output": 6740,
+      "warning_generation_token_limit": 6511
+    },
+    {
+      "run_id": "pilot_001",
+      "trajectories": 100,
+      "schedules": 100,
+      "checkpoints": 31,
+      "observation_rounds": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30
+      ],
+      "status": "complete",
+      "observation_records": 3100,
+      "observation_valid": 3100,
+      "model_invoked": 6000,
+      "status_ok": 6100,
+      "empty_outputs": 0,
+      "translation_records": 3000,
+      "translation_valid": 3000,
+      "warning_repetitive_output": 269,
+      "warning_generation_token_limit": 260
+    },
+    {
+      "run_id": "smoke_001",
+      "trajectories": 4,
+      "schedules": 4,
+      "checkpoints": 3,
+      "observation_rounds": [
+        0,
+        1,
+        2
+      ],
+      "status": "complete",
+      "observation_records": 12,
+      "observation_valid": 12,
+      "model_invoked": 16,
+      "status_ok": 20,
+      "empty_outputs": 0,
+      "translation_records": 8,
+      "translation_valid": 8
+    }
+  ],
+  "pending_files": 0,
+  "discrepancies": [],
+  "provenance": {
+    "attribution": "NLLB Team et al. (2022), No Language Left Behind: Scaling Human-Centered Machine Translation",
+    "count": 1000,
+    "license": "CC-BY-SA-4.0",
+    "license_note": "Upstream Meta FLORES license controls; the mirror card says CC-BY-4.0.",
+    "revision": "8a8758a392e429432f6e95fcac1445550a4d3ccd",
+    "selection": "Deduplicate exact strings in source order; Python Random(seed).shuffle; first N; retain original line text",
+    "selection_seed": 1729,
+    "source": "DGME/FLORES-200",
+    "source_sha256": "612e9fbe87997617c0fa8fa8929654a4f49b728d96738112c2b86ef6a1d78d88",
+    "split": "devtest",
+    "url": "https://huggingface.co/datasets/DGME/FLORES-200/resolve/8a8758a392e429432f6e95fcac1445550a4d3ccd/devtest/eng_Latn.devtest"
+  },
+  "language_pool": [
+    {
+      "code": "fra_Latn",
+      "name": "French"
+    },
+    {
+      "code": "deu_Latn",
+      "name": "German"
+    },
+    {
+      "code": "arb_Arab",
+      "name": "Modern Standard Arabic"
+    },
+    {
+      "code": "jpn_Jpan",
+      "name": "Japanese"
+    },
+    {
+      "code": "hin_Deva",
+      "name": "Hindi"
+    },
+    {
+      "code": "spa_Latn",
+      "name": "Spanish"
+    },
+    {
+      "code": "rus_Cyrl",
+      "name": "Russian"
+    },
+    {
+      "code": "zho_Hans",
+      "name": "Chinese (Simplified)"
+    },
+    {
+      "code": "swh_Latn",
+      "name": "Swahili"
+    },
+    {
+      "code": "tam_Taml",
+      "name": "Tamil"
+    },
+    {
+      "code": "kor_Hang",
+      "name": "Korean"
+    },
+    {
+      "code": "tur_Latn",
+      "name": "Turkish"
+    },
+    {
+      "code": "ben_Beng",
+      "name": "Bengali"
+    },
+    {
+      "code": "ita_Latn",
+      "name": "Italian"
+    },
+    {
+      "code": "ell_Grek",
+      "name": "Greek"
+    },
+    {
+      "code": "heb_Hebr",
+      "name": "Hebrew"
+    },
+    {
+      "code": "tha_Thai",
+      "name": "Thai"
+    },
+    {
+      "code": "vie_Latn",
+      "name": "Vietnamese"
+    },
+    {
+      "code": "ind_Latn",
+      "name": "Indonesian"
+    },
+    {
+      "code": "fin_Latn",
+      "name": "Finnish"
+    },
+    {
+      "code": "pol_Latn",
+      "name": "Polish"
+    },
+    {
+      "code": "ukr_Cyrl",
+      "name": "Ukrainian"
+    },
+    {
+      "code": "nld_Latn",
+      "name": "Dutch"
+    },
+    {
+      "code": "por_Latn",
+      "name": "Portuguese"
+    },
+    {
+      "code": "pes_Arab",
+      "name": "Western Persian"
+    },
+    {
+      "code": "urd_Arab",
+      "name": "Urdu"
+    },
+    {
+      "code": "tel_Telu",
+      "name": "Telugu"
+    },
+    {
+      "code": "mal_Mlym",
+      "name": "Malayalam"
+    },
+    {
+      "code": "kan_Knda",
+      "name": "Kannada"
+    },
+    {
+      "code": "mar_Deva",
+      "name": "Marathi"
+    },
+    {
+      "code": "guj_Gujr",
+      "name": "Gujarati"
+    },
+    {
+      "code": "pan_Guru",
+      "name": "Eastern Panjabi"
+    },
+    {
+      "code": "npi_Deva",
+      "name": "Nepali"
+    },
+    {
+      "code": "sin_Sinh",
+      "name": "Sinhala"
+    },
+    {
+      "code": "mya_Mymr",
+      "name": "Burmese"
+    },
+    {
+      "code": "khm_Khmr",
+      "name": "Khmer"
+    },
+    {
+      "code": "lao_Laoo",
+      "name": "Lao"
+    },
+    {
+      "code": "bod_Tibt",
+      "name": "Tibetan"
+    },
+    {
+      "code": "kat_Geor",
+      "name": "Georgian"
+    },
+    {
+      "code": "hye_Armn",
+      "name": "Armenian"
+    },
+    {
+      "code": "amh_Ethi",
+      "name": "Amharic"
+    },
+    {
+      "code": "hau_Latn",
+      "name": "Hausa"
+    },
+    {
+      "code": "yor_Latn",
+      "name": "Yoruba"
+    },
+    {
+      "code": "zul_Latn",
+      "name": "Zulu"
+    },
+    {
+      "code": "som_Latn",
+      "name": "Somali"
+    },
+    {
+      "code": "ron_Latn",
+      "name": "Romanian"
+    },
+    {
+      "code": "hun_Latn",
+      "name": "Hungarian"
+    },
+    {
+      "code": "swe_Latn",
+      "name": "Swedish"
+    },
+    {
+      "code": "ces_Latn",
+      "name": "Czech"
+    },
+    {
+      "code": "kaz_Cyrl",
+      "name": "Kazakh"
+    }
+  ],
+  "model": {
+    "model_name": "facebook/nllb-200-distilled-600M",
+    "model_revision": "f8d333a098d19b4fd9a8b18f94170487ad3f821d",
+    "precision": "float32",
+    "torch": "2.8.0+cu128",
+    "transformers": "4.57.6",
+    "gpu": "NVIDIA RTX A5000"
+  },
+  "observation_rounds": [
+    0,
+    1,
+    2,
+    3,
+    5,
+    10,
+    15,
+    20,
+    25,
+    30,
+    35,
+    40,
+    45,
+    50,
+    55,
+    60,
+    65,
+    70,
+    75,
+    80,
+    85,
+    90,
+    95,
+    100
+  ],
+  "limitations": [
+    "Recorded ok means the collector accepted output, not that a human validated its meaning.",
+    "Language identification and multilingual semantic correctness are not independently validated.",
+    "Round-zero English observations are copies and do not invoke the model."
+  ]
+}

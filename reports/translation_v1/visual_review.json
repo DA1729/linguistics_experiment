@@ -1,0 +1,28 @@
+{
+  "method": "All 22 PNG figures reviewed in a contact sheet; figures 12 and 22 also viewed at full size.",
+  "result": "Axes, labels, legends and captions readable; actual observations shown; no blank panels or clipped text found.",
+  "png_sha256": {
+    "21_candidate_outputs.png": "ad8e624181499585c070645138132e6f562c51ebfc6be637aebb4515460018d8",
+    "19_quality_flags.png": "b6a8ea94cbd2b13c18e6df5066efbb18565e8e372c36154636762ed2e11341f9",
+    "03_largest_groups.png": "6844cd3f1984e547582f80217ba840fca866fdc9bd84d29c2aefbfdd8d3ea253",
+    "15_embedding_dimension.png": "aa57f0cd559d79652650d4473fed1b8131a88c56db9cfda438865d6b81658805",
+    "09_projection_collisions.png": "37efe3ec04db81693afbceccc6af89f41763edd53a92f2463bfc375830326159",
+    "17_sentence_lengths.png": "6f3a978859b5d4b31e31b7ab5ab311bf48898bb987e811793b3c22bf034fb677",
+    "14_semantic_geometry.png": "3daf5ca0c45e87e81e6f950e894b93671ec625cc6c63f3dabdcd87edddc93d8c",
+    "20_language_associations.png": "ffbea8d737401ab75823d4af3e4d069de90c8ef359849675dee9426c4bcda7fa",
+    "11_partition_dynamics.png": "7ef7e30997da83368c26ef50ea16e3dca7061e698c557809ca2a7d8f0a2eff9c",
+    "05_rank_frequency.png": "f6f3eaf470eb312b1786d56ecc14c0915ca7e949044b380a79216bed497c18a0",
+    "22_filtering_robustness.png": "b79be2f7eed6fba173584b5a7a3aa7041804fc27864aa953d80d396c7f81f307",
+    "12_semantic_drift.png": "f3f3aa7571f36fc29ca9de4f64763b9b9c569b3baec80d0f0880780f2e4beeba",
+    "10_collision_persistence.png": "c0c9ccdd15c1c9cdcefc398d059062348e441c3ff91ff8cd079e8f769846386b",
+    "18_lexical_retention.png": "7e506a97324f43b106fb3b3b18d1b0e4b8fe6aad728066eb5a0a4d2e1332c9c0",
+    "13_semantic_pair_distribution.png": "2a1ba276c52f1b64d414a138e5fd69af6decd507db5b5b6f5ee2ef129372285e",
+    "04_entropy_diversity.png": "4d8137b1d3408d945cdd6809b8182f706c18cd32254e64eca66a15a5934ec5c3",
+    "02_collision_probability.png": "411b587f93082716dc06d7e15fcb5a7ba3ae429fb0df60d497e94d72eeb44d56",
+    "06_cluster_size_distribution.png": "8d3d8a7c7a5151b6e1417843f78424108abc5df48166cf63156c3f05efd11653",
+    "07_normalization.png": "d221ed26e673faedddf72b46d11e46a5ef4f30f1f5ce1902caf17debd538958e",
+    "16_semantic_grouping.png": "b6e239742e5d44d2575c71ba7abac926be0e76e7cd096e4ed538109125c3662a",
+    "01_exact_diversity.png": "332d8545b830a38b9d4d1483a8b4997af2fe082ecb68cc4683b8c601bce05ef4",
+    "08_active_vs_english.png": "a29cea6ad303e9e635608cffa4ea7083d9b01efc9501bd5f61f5a3c547adb6d2"
+  }
+}

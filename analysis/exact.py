@@ -151,8 +151,8 @@ def temporal_analysis(data, config):
         left, right = rounds[t], rounds[u]
         row = {'from_round': t, 'to_round': u, 'round_gap': u-t, **transition_metrics(left,right)}
         common = sorted(set(left) & set(right))
-        a = pd.factorize([left[x] for x in common])[0]
-        b = pd.factorize([right[x] for x in common])[0]
+        a = pd.factorize(np.array([left[x] for x in common],dtype=object))[0]
+        b = pd.factorize(np.array([right[x] for x in common],dtype=object))[0]
         null = permutation_persistence(a,b,config['permutations'],rng)
         if row['previous_equal_pairs']:
             row.update(null_q025=float(np.quantile(null,.025)), null_q975=float(np.quantile(null,.975)),

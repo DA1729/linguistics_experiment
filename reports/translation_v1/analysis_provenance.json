@@ -1,0 +1,59 @@
+{
+  "configuration": {
+    "archive": "data/multilingual_translation_v1_complete.zip",
+    "output": "reports/translation_v1",
+    "cache": ".analysis_runtime/cache",
+    "run_id": "main_001",
+    "seed": 20261015,
+    "cpu_threads": 4,
+    "permutations": 999,
+    "bootstrap_samples": 500,
+    "pair_sample_size": 50000,
+    "subsample_size": 500,
+    "subsample_repetitions": 100,
+    "embedding": {
+      "model": "sentence-transformers/all-MiniLM-L6-v2",
+      "revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+      "batch_size": 64,
+      "max_seq_length": 256,
+      "thresholds": [
+        0.7,
+        0.8,
+        0.9
+      ]
+    }
+  },
+  "python": "3.13.11",
+  "platform": "Linux-7.0.0-38-generic-x86_64-with-glibc2.39",
+  "packages": {
+    "numpy": "2.4.0",
+    "pandas": "2.3.3",
+    "scipy": "1.16.3",
+    "scikit-learn": "1.8.0",
+    "matplotlib": "3.10.8",
+    "sentence-transformers": "5.2.0",
+    "transformers": "4.57.6",
+    "torch": "2.10.0",
+    "markdown": "3.10"
+  },
+  "git_head": "e42ac78b8a3df56f9124a069dd129a4371d7437e",
+  "analysis_source_sha256": {
+    "analysis/run_analysis.py": "ae9d92fa2ad2af69f0ff57ad113cdd50cc48e1ffd633628a602277c3d152c169",
+    "analysis/__init__.py": "6c5d233fe662b3e9be3602819bd863bc0bc1d80687772fa2452acb80de69ed00",
+    "analysis/content.py": "241033fbee7e3bd5185cba28bf26dcd97b18de2c958ea0e0ee7d3d90b0c34afa",
+    "analysis/exact.py": "81c310f651e9f5d96da41e4150002a5573dbcd013a95252c3794ab45f4982e86",
+    "analysis/figures.py": "7bfe16f9663564f90b768b7c8b28d3011e313fd4edb2881a67277341bdd1ce32",
+    "analysis/semantic.py": "107a9e9e53f1bbf4ac94f48e9b77d040d621411bc7d21916ca739025de17377c",
+    "analysis/common.py": "9bcb172e86defc090b3c69add81c7547adb52f43a0e21956eede7609a73f5099",
+    "analysis/load_data.py": "464f098251929a020faf80744d526db798807c2b44d123f0e42f2f5dc49aa80e",
+    "analysis/diagnostics.py": "0d708974e2d57728d7b04e6360ed91ea23024f8ffa9b2c279b201a7bc6f07ef0",
+    "analysis/report.py": "59d1c4c53d68bfb33810cf7c93c405ac5de4dddcee68a25d3a027e8e06adf519",
+    "analysis/validate_outputs.py": "e5b7d2d4c729315c637f61f564bcffb4b9e3127478b13c37259e3fc7ecc29bae",
+    "tests/test_analysis.py": "44761e9dc972c00e588c8d26bbb0782d38606edce6afe93d8e18e8d0bca85f4a",
+    "config/analysis.toml": "06da822098e119d6bafd532b790da73ef67f70d433a64ec486b52c45f43ea9ea",
+    "requirements_analysis.txt": "957f4eb3a3302b0b1998f100352b000ccf285e397a744e59afb2dcffd942f051",
+    "analyze_local.sh": "cf38203f13888d4e51ba0807122f6f094e6ef0c4c75cf60cdfe8e844659482c0"
+  },
+  "device": "cpu",
+  "cpu_threads": 4
+}

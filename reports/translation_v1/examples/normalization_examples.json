@@ -1,0 +1,74 @@
+[
+  {
+    "round": 20,
+    "scheme": "casefold",
+    "normalized": "wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait,",
+    "raw_variants": [
+      "Wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait,",
+      "wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait,"
+    ]
+  },
+  {
+    "round": 20,
+    "scheme": "punctuation",
+    "normalized": "wait wait wait wait wait wait wait wait wait wait wait wait wait wait wait wait wait wait wait wait wait wait wait wait wait wait wait wait wait wait wait wait wait wait wait wait wait wait wait wait wait wait wait wait wait wait wait wait wait wait wait wait wait wait wait wait wait wait wait wait wait wait wait wait wait wait wait wait wait wait wait wait wait wait wait wait wait wait wait wait wait wait wait wait wait wait wait wait wait wait wait wait wait wait wait wait wait wait wait wait wait wait wait wait wait wait wait wait wait wait wait wait wait wait wait wait wait wait wait wait wait wait wait wait wait wait wait",
+    "raw_variants": [
+      "Wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait,",
+      "wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait, wait,"
+    ]
+  },
+  {
+    "round": 35,
+    "scheme": "punctuation",
+    "normalized": "this is important",
+    "raw_variants": [
+      "This is important .",
+      "This is important."
+    ]
+  },
+  {
+    "round": 45,
+    "scheme": "punctuation",
+    "normalized": "it s all right",
+    "raw_variants": [
+      "- It's all right.",
+      "It's all right."
+    ]
+  },
+  {
+    "round": 50,
+    "scheme": "punctuation",
+    "normalized": "this is important",
+    "raw_variants": [
+      "This is important .",
+      "This is important."
+    ]
+  },
+  {
+    "round": 55,
+    "scheme": "punctuation",
+    "normalized": "it s all right",
+    "raw_variants": [
+      "\"It's all right.",
+      "It's all right."
+    ]
+  },
+  {
+    "round": 60,
+    "scheme": "punctuation",
+    "normalized": "he said",
+    "raw_variants": [
+      "He said,",
+      "he said:"
+    ]
+  },
+  {
+    "round": 95,
+    "scheme": "casefold",
+    "normalized": "mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother,",
+    "raw_variants": [
+      "Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother, Mother,",
+      "Mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother, mother,"
+    ]
+  }
+]

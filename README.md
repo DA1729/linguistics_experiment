@@ -230,3 +230,17 @@ The independent [laptop codebase](laptop/README.md) targets the Radeon 860M lapt
 Its default command runs a short benchmark only, with a four-hour limit and a runtime
 estimate gate for explicitly requested local experiments. The RunPod workflow above
 remains unchanged.
+
+## Completed experiment analysis
+
+The CPU analysis and results are documented in [analysis/README.md](analysis/README.md).
+With the original archive and checksum in `data/`, run:
+
+```bash
+bash analyze_local.sh
+```
+
+Read the [key findings](reports/translation_v1/key_findings.md),
+[full research report](reports/translation_v1/research_report.md), or
+[standalone HTML](reports/translation_v1/research_report.html).
+The [publication guide](PUBLICATION.md) explains what to commit and how to share raw data separately.
